@@ -1,0 +1,37 @@
+--Create a grocery store database.
+
+CREATE TABLE crystals (ID INTEGER PRIMARY KEY, name TEXT, color TEXT, price INTEGER, shelf INTEGER);
+
+INSERT INTO crystals VALUES (1, "Amethyst", "Purple", 20, 3);
+INSERT INTO crystals VALUES (2, "Rose Quartz", "Pink", 15, 1);
+INSERT INTO crystals VALUES (3, "Sun Stone", "Orange", 10, 1);
+INSERT INTO crystals VALUES (4, "Onyx", "Black", 15, 4);
+INSERT INTO crystals VALUES (5, "Citrine", "Yellow", 10, 1);
+INSERT INTO crystals VALUES (6, "Tigers Eye", "Brown", 15, 4);
+INSERT INTO crystals VALUES (7, "Emerald", "Green", 25, 3);
+INSERT INTO crystals VALUES (8, "Amethyst", "Purple", 30, 3);
+INSERT INTO crystals VALUES (9, "Opal", "White", 45, 4);
+INSERT INTO crystals VALUES (10, "Jasper", "Red", 25, 1);
+INSERT INTO crystals VALUES (11, "Obsidian", "Black", 20, 4);
+INSERT INTO crystals VALUES (12, "Smoky Quartz", "Black", 25, 4);
+INSERT INTO crystals VALUES (13, "Milky Quartz", "White", 25, 3);
+INSERT INTO crystals VALUES (14, "Malachite", "Green", 20, 2);
+INSERT INTO crystals VALUES (15, "Aquamarine", "Blue", 15, 2);
+
+--display the database ordered by price.
+SELECT * FROM crystals
+ORDER BY price asc;
+
+--display the sum of these products.
+SELECT * FROM crystals;
+SELECT SUM(PRICE) 
+FROM crystals;
+
+--what is the average price of an item in the shop?
+SELECT AVG(PRICE)
+FROM crystals;
+SELECT * FROM crystals;
+
+--display products where price is less than 15.
+SELECT * FROM crystals WHERE price <15
+
