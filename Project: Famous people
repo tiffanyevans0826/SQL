@@ -1,0 +1,86 @@
+--In this project, you’re going to make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
+
+CREATE TABLE billionaires 
+( id INTEGER PRIMARY KEY,
+name TEXT,
+hometown TEXT,
+age INTEGER, 
+gender TEXT);
+
+INSERT INTO billionaires VALUES (1, "Elon Musk", "Pretoria, Transvaal, South Africa", 51, "Male");
+INSERT INTO billionaires VALUES (2, "Jeff Bezos", "Albuquerque, New Mexico", 59, "Male");
+INSERT INTO billionaires VALUES (3, "Bill Gates", "Seatlle, Washington", 67, "Male");
+INSERT INTO billionaires VALUES (4, "Kim Kardashian", "Los Angeles, Califronia", 42, "Female");
+INSERT INTO billionaires VALUES (5, "Oprah Winfrey", "Kosciusko, Mississippi", 69, "Female");
+INSERT INTO billionaires VALUES (6, "Warren Buffet", "Omaha, Nebraska", 92, "Male");
+INSERT INTO billionaires VALUES (7, "Steven Spielberg", "Cincinnati, Ohio", 79, "Male");
+INSERT INTO billionaires VALUES (8, "Rihanna", "Saint Michael, Barbados", 35, "Female");
+INSERT INTO billionaires VALUES (9, "Bernard Arnault", "Roubaix, France", 74, "Male");
+INSERT INTO billionaires VALUES (10, "Mark Zuckerburg", "White Plains, New York", 38, "Male");
+
+
+CREATE TABLE wealth
+( id INTEGER PRIMARY KEY,
+net_worth INTEGER,
+industry TEXT,
+source TEXT);
+
+INSERT INTO wealth VALUES (1, 191.40, "Automotive", "Tesla");
+INSERT INTO wealth VALUES (2, 121.24, "Technology", "Amazon");
+INSERT INTO wealth VALUES (3, 107.86, "Technology", "Microsoft");
+INSERT INTO wealth VALUES (4, 1.20, "Media", "Television");
+INSERT INTO wealth VALUES (5, 2.47, "Media", "Television");
+INSERT INTO wealth VALUES (6, 67.5, "Insurance", "Berkshire Hathaway");
+INSERT INTO wealth VALUES (7, 4.0, "Media", "Filmmaker");
+INSERT INTO wealth VALUES (8, 1.39, "Media", "Artist");
+INSERT INTO wealth VALUES (9, 218.20, "Luxury Goods", "LVMH Moet Hennessy Louis Vuitton");
+INSERT INTO wealth VALUES (10, 73.61, "Internet", "Facebook");
+
+
+CREATE TABLE personal
+(id INTEGER PRIMARY KEY,
+education TEXT, 
+marital TEXT,
+children INTEGER);
+
+INSERT INTO personal VALUES (1, "Bachelors", "Divorced", 10);
+INSERT INTO personal VALUES (2, "Bachelors", "Divorced", 4);
+INSERT INTO personal VALUES (3, "None", "Divorced", 3);
+INSERT INTO personal VALUES (4, "None", "Divorced", 4);
+INSERT INTO personal VALUES (5, "Bachelors", "Single", 0);
+INSERT INTO personal VALUES (6, "Masters", "Widow", 3);
+INSERT INTO personal VALUES (7, "Bachelors", "Married", 6);
+INSERT INTO personal VALUES (8, "None", "Single", 1);
+INSERT INTO personal VALUES (9, "Bachelors", "Married", 5);
+INSERT INTO personal VALUES (10, "None", "Married", 3);
+
+-- Find the richest billionaires net worth to the least.
+
+SELECT billionaires.name, wealth.net_worth
+FROM billionaires
+JOIN wealth
+ON billionaires.ID=wealth.ID
+ORDER BY net_worth desc; 
+
+
+-- Find each billionaires source of wealth and their industry of work.
+
+SELECT billionaires.name, wealth.source, wealth.industry
+FROM billionaires
+JOIN wealth
+ON billionaires.ID=wealth.ID;
+
+
+-- Show each billionaires level of college education. 
+
+SELECT billionaires.name, personal.education
+FROM billionaires
+JOIN personal
+ON billionaires.ID=personal.ID;
+
+-- Show each billionaires marital status and number of children.
+
+SELECT billionaires.name, personal.marital, personal.children
+FROM billionaires
+JOIN personal
+ON billionaires.ID=personal.ID;
